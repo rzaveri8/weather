@@ -14,13 +14,17 @@ export class CityComponent implements OnInit {
 
   city = 'Istanbul';
   cities = [
-    'Istanbul', 'Kocaeli', 'Ankara'
+    'Istanbul', 'Kocaeli', 'London', 'New York'
   ];
 
   GetOutputValue(newCity: string) {
     if (newCity) {
       this.cities.push(newCity);
     }
+  }
+
+  deleteCity(index) {
+    this.cities.splice(index, 1);
   }
 
   onSelect(city: string) {
