@@ -1,0 +1,14 @@
+<div class="border">
+
+  <u>Şehir</u>
+
+  <div *ngIf="!loading">
+    {{weather.data.request[0].query}}
+  </div>
+
+  <u>Şu anki sıcaklık</u>
+
+  <div *ngIf="!loading">
+    {{weather.data.current_condition[0].temp_C}}
+  </div>
+</div>
