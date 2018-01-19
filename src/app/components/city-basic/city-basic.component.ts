@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 
 @Component({
-  selector: 'app-city-detail',
+  selector: 'app-city-basic',
   templateUrl: './city-basic.component.html',
   styleUrls: ['./city-basic.component.css']
 })

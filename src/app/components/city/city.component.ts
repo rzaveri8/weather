@@ -10,7 +10,7 @@ export class CityComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild(CityBasicComponent) cityDetail;
+  @ViewChild(CityBasicComponent) cityBasic;
 
   city = 'Istanbul';
   cities = [
@@ -29,7 +29,7 @@ export class CityComponent implements OnInit {
 
   onSelect(city: string) {
     this.city = city;
-    this.cityDetail.apiCall(this.city);
+    this.cityBasic.apiCall(this.city);
   }
 
   ngOnInit() { }
