@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CityDetailComponent } from '../city-detail/city-detail.component';
+import { CityBasicComponent } from '../city-basic/city-basic.component';
 
 @Component({
   selector: 'app-city',
@@ -10,7 +10,7 @@ export class CityComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild(CityDetailComponent) cityDetail;
+  @ViewChild(CityBasicComponent) cityDetail;
 
   city = 'Istanbul';
   cities = [

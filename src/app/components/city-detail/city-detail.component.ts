@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-city-detail',
@@ -8,25 +7,9 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class CityDetailComponent implements OnInit {
 
-  constructor(private weatherService: WeatherService) { }
-
-  loading = true;
-  weather: any;
-  @Input() city: string;
-
-  apiCall(city: string) {
-    this.weatherService.getWeatherDataFromApi(city)
-      .subscribe(data => {
-          this.weather = data;
-        },
-        err => {
-          console.log(err);
-        },
-        () => {
-          this.loading = false;
-        });
-  }
+  constructor() { }
 
   ngOnInit() {
   }
+
 }

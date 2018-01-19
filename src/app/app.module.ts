@@ -7,11 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CityComponent } from './components/city/city.component';
-import { CityDetailComponent } from './components/city-detail/city-detail.component';
+import { CityBasicComponent } from './components/city-basic/city-basic.component';
 import { CityAddComponent } from './components/city-add/city-add.component';
+import {CityDetailComponent} from './components/city-detail/city-detail.component';
 
 const appRoutes: Routes = [
-  { path: 'city-detail/:city', component: CityDetailComponent },
+  { path: 'city-basic/:city', component: CityBasicComponent },
   { path: '**', component: HomeComponent }
 ];
 
@@ -20,8 +21,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     CityComponent,
-    CityDetailComponent,
-    CityAddComponent
+    CityBasicComponent,
+    CityAddComponent,
+    CityDetailComponent
   ],
   imports: [
     RouterModule.forRoot(
