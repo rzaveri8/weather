@@ -1,0 +1,9 @@
+<div class="city-add form-group">
+  <label class="city-add-item" for="city">Şehir Ekle:</label>
+  <input #newCity
+         (keyup.enter)="notificationToParent(newCity.value)"
+         class="form-control city-add-item"
+         type="text" placeholder="Şehir Adı" id="city">
+
+  <button (click)="notificationToParent(newCity.value)" class="btn btn-success city-add-item">Şehir Ekle</button>
+</div>

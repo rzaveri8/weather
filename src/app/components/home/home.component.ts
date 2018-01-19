@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -8,29 +9,9 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private weatherService: WeatherService) { }
-
-  cities = [
-    'Istanbul', 'Kocaeli', 'Ankara'
-  ];
-  weather: any;
-  loading = true;
+  constructor() { }
 
   ngOnInit() {
     // Get Weather Data From Api
-    this.getWeatherData();
-  }
-
-  private getWeatherData() {
-    this.weatherService.getWeatherDataFromApi()
-      .subscribe(data => {
-        this.weather = data;
-      },
-        err => {
-        console.error(err);
-      },
-        () => {
-        this.loading = false;
-      });
   }
 }
