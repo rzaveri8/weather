@@ -1,10 +1,21 @@
 .city-add {
-  width: 50%;
-  display: block;
+  display: grid;
   padding: 10px;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: auto;
 }
 
 .city-add-item {
-  margin: 10px;
-  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  width: 75%;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.city-add-button {
+  margin-top: 15px;
+  width: auto;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }

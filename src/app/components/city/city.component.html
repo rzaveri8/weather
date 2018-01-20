@@ -1,30 +1,29 @@
-<div class="city center">
-  <table id="city-table" class="table table-bordered">
-    <tr>
-      <th>Şehirler</th>
-      <th>Sil</th>
-      <th>Detaylı Görünüm</th>
-    </tr>
-    <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
+<div class="wrapper">
+  <div class="item1">
+    <table id="city-table" class="table table-bordered">
+      <tr>
+        <th>Şehirler</th>
+        <th>Sil</th>
+        <th>Detaylı Görünüm</th>
+      </tr>
+      <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
 
-      <td>
-        {{city}}
-      </td>
+        <td>
+          {{city}}
+        </td>
 
-      <td>
-        <button (click)="deleteCity(i)">Sil</button>
-      </td>
+        <td>
+          <button (click)="deleteCity(i)">Sil</button>
+        </td>
 
-      <td>
-        <a (click)="onDetail(city)">Detay</a>
-      </td>
-    </tr>
-  </table>
+        <td>
+          <a (click)="onDetail(city)">Detay</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <app-city-add class="item2" (outputToParent)="GetOutputValue($event)"></app-city-add>
+
+  <app-city-detail class="item3"></app-city-detail>
 </div>
-
-<hr>
-
-<app-city-add (outputToParent)="GetOutputValue($event)"></app-city-add>
-
-<app-city-detail></app-city-detail>
-<!--<app-city-basic class="border" [city]="city"></app-city-basic>-->
