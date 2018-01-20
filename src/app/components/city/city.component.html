@@ -3,6 +3,7 @@
     <tr>
       <th>Şehirler</th>
       <th>Sil</th>
+      <th>Detaylı Görünüm</th>
     </tr>
     <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
 
@@ -15,11 +16,10 @@
       </td>
 
       <td>
-        <a routerLink="/city-basic" routerLinkActive="active">Detay</a>
+        <a (click)="onDetail(city)" routerLink="city-detail/{{city}}">Detay</a>
       </td>
     </tr>
   </table>
-  <router-outlet></router-outlet>
 </div>
 
 <hr>
@@ -27,5 +27,3 @@
 <app-city-add (outputToParent)="GetOutputValue($event)"></app-city-add>
 
 <app-city-basic class="border" [city]="city"></app-city-basic>
-
-
