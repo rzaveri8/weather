@@ -26,7 +26,7 @@
         <th>Gün Batımı</th>
         <th>En Yüksek Sıcaklık</th>
         <th>En Düşük Sıcaklık</th>
-        <th>UV İndeksi</th>
+        <th>Yağmur Olasılığı</th>
       </tr>
 
       <tr *ngFor="let day of weather.data.weather">
@@ -35,7 +35,7 @@
         <td>{{day.astronomy[0].sunset}}</td>
         <td>{{day.maxtempC}}</td>
         <td>{{day.mintempC}}</td>
-        <td>{{day.uvIndex}}</td>
+        <td>%{{day.hourly[0].chanceofrain}}</td>
       </tr>
     </table>
   </div>
