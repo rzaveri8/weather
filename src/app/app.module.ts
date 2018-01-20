@@ -10,7 +10,6 @@ import { CityBasicComponent } from './components/city-basic/city-basic.component
 import { CityAddComponent } from './components/city-add/city-add.component';
 import { CityDetailComponent } from './components/city-detail/city-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { WeatherDataService } from './services/weather-data.service';
 
 const appRoutes: Routes = [
   { path: 'city-detail/:city', component: CityDetailComponent, data: { weatherData: 'weatherData' } }
@@ -32,7 +31,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [WeatherService, WeatherDataService],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@
     </tr>
     <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
 
-      <td (click)="onSelect(city)">
+      <td>
         {{city}}
       </td>
 
@@ -16,7 +16,7 @@
       </td>
 
       <td>
-        <a (click)="onDetail(city)" routerLink="city-detail/{{city}}">Detay</a>
+        <a (click)="onDetail(city)">Detay</a>
       </td>
     </tr>
   </table>
@@ -26,4 +26,5 @@
 
 <app-city-add (outputToParent)="GetOutputValue($event)"></app-city-add>
 
-<app-city-basic class="border" [city]="city"></app-city-basic>
+<app-city-detail></app-city-detail>
+<!--<app-city-basic class="border" [city]="city"></app-city-basic>-->

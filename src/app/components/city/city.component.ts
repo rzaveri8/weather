@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CityBasicComponent } from '../city-basic/city-basic.component';
-import {WeatherDataService} from '../../services/weather-data.service';
+import { CityDetailComponent } from '../city-detail/city-detail.component';
 
 @Component({
   selector: 'app-city',
@@ -9,9 +9,10 @@ import {WeatherDataService} from '../../services/weather-data.service';
 })
 export class CityComponent implements OnInit {
 
-  constructor(private weatherData: WeatherDataService) { }
+  constructor() { }
 
   @ViewChild(CityBasicComponent) cityBasic;
+  @ViewChild(CityDetailComponent) cityDetail;
 
   city = 'select city';
   cities = [
@@ -29,19 +30,8 @@ export class CityComponent implements OnInit {
     this.cities.splice(index, 1);
   }
 
-  onSelect(city: string) {
-    this.city = city;
-    this.cityBasic.apiCall(this.city);
-  }
-
   onDetail(city: string) {
-    this.city = city;
-    this.weather = this.cityBasic.weather;
-
-    // City.Component ve City-Detail.component arasında veri
-    // paylaşımı için kullanılan servise weather verisinin aktarımı
-    this.weatherData.storage = this.weather;
-    console.log(this.weather);
+    this.cityDetail.changeCity(city);
   }
 
   ngOnInit() { }

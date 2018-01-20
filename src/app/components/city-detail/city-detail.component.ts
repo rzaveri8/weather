@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { WeatherDataService } from '../../services/weather-data.service';
+import { Component, OnInit} from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-city-detail',
@@ -9,29 +8,30 @@ import { WeatherDataService } from '../../services/weather-data.service';
 })
 export class CityDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private weatherData: WeatherDataService) { }
+  constructor(private weatherService: WeatherService) { }
 
   city: string;
   weather: any;
   hidden = true;
+  loading: boolean;
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.city = params.city;
-    });
+  }
 
-    /*this.route.data
-      .subscribe(weather => this.weather = weather);*/
+  changeCity(city: string) {
+    this.loading = true;
 
-    this.route.data
-      .subscribe( (weather) => {
-        if (this.weather) {
-          this.weather = weather;
-          this.hidden = false;
-        }
-      });
-
-    this.weather = this.weatherData.storage;
-    console.log(this.weather);
+    this.weatherService.getWeatherDataFromApi(city)
+      .subscribe((weather) => {
+        this.weather = weather;
+        this.city = city;
+        this.hidden = false;
+      },
+        err => {
+          console.log(err);
+        },
+        () => {
+          this.loading = false;
+        });
   }
 }
