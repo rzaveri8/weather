@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class="item1">
-    <table id="city-table" class="table table-bordered">
+    <table id="city-table" class="table table-bordered table-responsive">
       <tr>
         <th>Şehirler</th>
-        <th>Sil</th>
-        <th>Detaylı Görünüm</th>
+        <th class="text-center">Sil</th>
+        <th class="text-center">Detaylı Görünüm</th>
       </tr>
       <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
 
@@ -12,11 +12,11 @@
           {{city}}
         </td>
 
-        <td>
-          <button (click)="deleteCity(i)">Sil</button>
+        <td class="text-center">
+          <button class="btn btn-danger" (click)="deleteCity(i)">Sil</button>
         </td>
 
-        <td>
+        <td class="text-center">
           <a (click)="onDetail(city)">Detay</a>
         </td>
       </tr>

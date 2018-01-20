@@ -19,16 +19,25 @@
 
     <h4 class="detay"><b>Haftalık Hava Durumu Özeti</b></h4>
 
-    <ul>
-      <li *ngFor="let day of weather.data.weather">
-        <p><b><u>Tarih: {{day.date}}</u></b></p>
-        <p>Gün Doğumu: {{day.astronomy[0].sunrise}}</p>
-        <p>Gün Batımı: {{day.astronomy[0].sunset}}</p>
-        <p>En Yüksek Sıcaklık: {{day.maxtempC}} °C</p>
-        <p>En Düşük Sıcaklık: {{day.mintempC}} °C</p>
-        <p>UV İndeksi: {{day.uvIndex}}</p>
-      </li>
-    </ul>
+    <table class="table table-responsive table-bordered">
+      <tr>
+        <th><b><u>Tarih</u></b></th>
+        <th>Gün Doğumu</th>
+        <th>Gün Batımı</th>
+        <th>En Yüksek Sıcaklık</th>
+        <th>En Düşük Sıcaklık</th>
+        <th>UV İndeksi</th>
+      </tr>
+
+      <tr *ngFor="let day of weather.data.weather">
+        <td>{{day.date}}</td>
+        <td>{{day.astronomy[0].sunrise}}</td>
+        <td>{{day.astronomy[0].sunset}}</td>
+        <td>{{day.maxtempC}}</td>
+        <td>{{day.mintempC}}</td>
+        <td>{{day.uvIndex}}</td>
+      </tr>
+    </table>
   </div>
 </div>
 

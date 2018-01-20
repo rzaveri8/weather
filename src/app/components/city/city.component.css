@@ -16,18 +16,31 @@
 }
 
 .item1{
+  padding-left: 20px;
+  padding-right: 20px;
+
   grid-column-start: 1;
   grid-column-end: 3;
 }
 
 .item2{
+  padding-left: 20px;
+  padding-right: 20px;
+
   grid-column-start: 3;
   grid-column-end: 4;
 }
 
 .item3{
+  padding-left: 20px;
+  padding-right: 20px;
+
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.delete-button {
+  text-align: center;
 }
