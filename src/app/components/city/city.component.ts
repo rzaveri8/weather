@@ -19,20 +19,36 @@ export class CityComponent implements OnInit {
     'Istanbul', 'Kocaeli', 'London', 'New York'
   ];
   weather: any;
+  localStorageFlag = true; // true when data is not loaded
+  myStorage = window.localStorage;
 
   GetOutputValue(newCity: string) {
     if (newCity) {
       this.cities.push(newCity);
+      // localstorage'a cities dizisini ekle
+      this.myStorage.setItem('cities', JSON.stringify(this.cities));
     }
+  }
+
+  getCitiesFromLocalStorage() {
+    this.cities = JSON.parse(this.myStorage.getItem('cities'));
   }
 
   deleteCity(index) {
     this.cities.splice(index, 1);
+    this.myStorage.removeItem('cities');
+    this.myStorage.setItem('cities', JSON.stringify(this.cities));
   }
 
   onDetail(city: string) {
     this.cityDetail.changeCity(city);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.myStorage.getItem('cities') === null) {
+      this.myStorage.setItem('cities', JSON.stringify(this.cities));
+    }
+    this.getCitiesFromLocalStorage();
+    this.localStorageFlag = false;
+  }
 }
