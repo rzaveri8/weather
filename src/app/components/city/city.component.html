@@ -1,10 +1,10 @@
 <div class="wrapper">
-  <div *ngIf="!localStorageFlag" class="item1">
+  <div *ngIf="!localStorageFlag" class="city-list">
     <table id="city-table" class="table table-bordered table-responsive table-hover">
       <tr>
-        <th>Şehirler</th>
+        <th class="table-city-column">Şehirler</th>
         <th class="text-center">Sil</th>
-        <th class="text-center">Detaylı Görünüm</th>
+        <th class="text-center detay-button">Detaylı Görünüm</th>
       </tr>
       <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
 
@@ -13,17 +13,17 @@
         </td>
 
         <td class="text-center">
-          <button class="btn btn-danger" (click)="deleteCity(i)">Sil</button>
+          <a (click)="onDetail(city)">Detay</a>
         </td>
 
         <td class="text-center">
-          <a (click)="onDetail(city)">Detay</a>
+          <button class="btn btn-danger" (click)="deleteCity(i)">Sil</button>
         </td>
       </tr>
     </table>
   </div>
 
-  <app-city-add class="item2" (outputToParent)="GetOutputValue($event)"></app-city-add>
+  <app-city-add class="city-add" (outputToParent)="GetOutputValue($event)"></app-city-add>
 
-  <app-city-detail class="item3"></app-city-detail>
+  <app-city-detail class="city-detail"></app-city-detail>
 </div>
