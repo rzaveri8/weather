@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
+import { Weather } from '../../Models/Weather';
 
 @Component({
   selector: 'app-city-detail',
@@ -7,31 +8,31 @@ import { WeatherService } from '../../services/weather.service';
   styleUrls: ['./city-detail.component.css']
 })
 export class CityDetailComponent implements OnInit {
-
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {}
 
   city: string;
-  weather: any;
+  weather: Weather;
   hidden = true;
   loading: boolean;
+  time = new Date().toLocaleDateString('tr');
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeCity(city: string) {
     this.loading = true;
 
-    this.weatherService.getWeatherDataFromApi(city)
-      .subscribe((weather) => {
-        this.weather = weather;
+    this.weatherService.getWeatherDataFromApi(city).subscribe(
+      weather => {
+        this.weather = weather as Weather;
         this.city = city;
         this.hidden = false;
       },
-        err => {
-          console.log(err);
-        },
-        () => {
-          this.loading = false;
-        });
+      err => {
+        console.log(err);
+      },
+      () => {
+        this.loading = false;
+      }
+    );
   }
 }

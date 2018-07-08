@@ -1,64 +1,55 @@
-<form hidden class="border">
-  <div class="form-check">
-    <input #hourly type="checkbox" class="form-check-input" id="hourCheck">
-    <label class="form-check-label" for="hourCheck">Saat</label>
+<div class="">
+  <div class="">
+    <div class="">
+      <form hidden class="">
+        <div class="">
+          <input #hourly type="checkbox" class="" id="hourCheck">
+          <label class="" for="hourCheck">Saat</label>
+        </div>
+        <small>Saatlik detaylı hava durumu bilgisi istiyorsanız seçin.</small>
+      </form>
+    </div>
   </div>
-  <small>Saatlik detaylı hava durumu bilgisi istiyorsanız seçin.</small>
-</form>
 
-<div *ngIf="!loading; else loadingTemplate">
-  <div *ngIf="!hidden">
-    <h4 class="baslik"><b>{{city}}</b></h4>
+  <div class="" *ngIf="!loading; else loadingTemplate">
+    <div class="" *ngIf="!hidden">
+      <div class="weather-info">
+        <h4 class="baslik">
+          <b>{{weather.city.name}}</b>
+        </h4>
 
-    <p>Gözlem Saati: {{weather.data.current_condition[0].observation_time}}</p>
-    <p>Gökyüzü: {{weather.data.current_condition[0].weatherDesc[0].value}}</p>
-
-    <p>Sıcaklık: {{weather.data.current_condition[0].temp_C}} °C</p>
-    <p>Nem: %{{weather.data.current_condition[0].humidity}}</p>
-    <p>Basınç: {{weather.data.current_condition[0].pressure}} mmHg</p>
-
-    <h4 class="detay"><b>Haftalık Hava Durumu Özeti</b></h4>
-
-    <table class="table table-responsive table-bordered table-hover">
-      <tr>
-        <th><b><u>Tarih</u></b></th>
-        <th>Gün Doğumu</th>
-        <th>Gün Batımı</th>
-        <th>En Yüksek Sıcaklık</th>
-        <th>En Düşük Sıcaklık</th>
-        <th>Yağmur Olasılığı</th>
-      </tr>
-
-      <tr *ngFor="let day of weather.data.weather">
-        <td>{{day.date}}</td>
-        <td>{{day.astronomy[0].sunrise}}</td>
-        <td>{{day.astronomy[0].sunset}}</td>
-        <td>{{day.maxtempC}}</td>
-        <td>{{day.mintempC}}</td>
-        <td>%{{day.hourly[4].chanceofrain}}</td>
-      </tr>
-    </table>
-    <small>*Not: Yağmur olasılığı her gün saat 12:00 için gösterilmektedir.</small>
-  </div>
-</div>
-
-<ng-template #loadingTemplate>
-  <b>Data Loading Please Wait...</b>
-</ng-template>
-
-<!--
-Saatlik hava durumu kodları
-
-<div *ngIf="hourly.checked">
-        <b><u>Saatlik Hava Durumu</u></b>
-        <ul>
-          <li *ngFor="let hour of day.hourly">
-            <p>Saat: {{hour.time}}</p>
-            <p>Sıcaklık: {{hour.tempC}}</p>
-            <p>Rüzgar Hızı: {{hour.windspeedKmph}}</p>
-            <p>Hissedilen Sıcaklık: {{hour.FeelsLikeC}}</p>
-            <p>Yağmur İhtimali: {{hour.chanceofrain}}</p>
-          </li>
-        </ul>
+        <p>Gözlem Saati: {{time}}</p>
+        <p>Ülke: {{weather.city.country}}</p>
+        <hr>
       </div>
--->
+
+      <div class="weather-data" *ngFor="let weatherData of weather.list | slice:1:16">
+        <div *ngFor="let _weather of weatherData.weather">
+          <h4><i><b>{{_weather.description | uppercase}}</b></i></h4>
+        </div>
+
+        <p>Tarih: <i>{{weatherData.dt_txt}}</i></p>
+        <p>Sıcaklık: <i>{{weatherData.main.temp | number:'1.0-0'}}</i></p>
+        <p>En Düşük: <i>{{weatherData.main.temp_min | number:'1.0-0'}}</i></p>
+        <p>En Yüksek: <i>{{weatherData.main.temp_max | number:'1.0-0'}}</i></p>
+
+        <p>Basınç: <i>{{weatherData.main.pressure | number:'1.0-0'}}</i></p>
+        <p>Deniz Seviyesi: <i>{{weatherData.main.sea_level | number:'1.0-0'}}</i></p>
+        <p>Yer Seviyesi: <i>{{weatherData.main.grnd_level | number:'1.0-0'}}</i></p>
+        <p>Nem: <i>{{weatherData.main.humidity}}</i></p>
+
+        <hr />
+      </div>
+
+      <h4 class="detay">
+        <b>Haftalık Hava Durumu Özeti</b>
+      </h4>
+      <small>*Not: Yağmur olasılığı her gün saat 12:00 için gösterilmektedir.</small>
+    </div>
+  </div>
+
+  <ng-template #loadingTemplate>
+    <b>Data Loading Please Wait...</b>
+  </ng-template>
+
+</div>

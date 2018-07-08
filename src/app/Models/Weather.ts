@@ -1,110 +1,61 @@
-interface RootObject {
-  data: Data;
+export class Weather {
+  cod: string;
+  message: number;
+  cnt: number;
+  list: Array<WeatherData>;
+  city: City;
 }
 
-interface Data {
-  request: Request[];
-  current_condition: Currentcondition[];
-  weather: Weather[];
-  ClimateAverages: ClimateAverage[];
+export class WeatherData {
+  dt: number;
+  main: Main;
+  weather: Array<WeatherDetail>;
+  clouds: Clouds;
+  wind: Wind;
+  sys: Sys;
+  dt_txt: string;
 }
 
-interface ClimateAverage {
-  month: Month[];
+export class Main {
+  temp: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  sea_level: number;
+  grnd_level: number;
+  humidity: number;
+  temp_kf: number;
 }
 
-interface Month {
-  index: string;
+export class WeatherDetail {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}
+
+export class Wind {
+  speed: number;
+  deg: number;
+}
+
+export class City {
+  id: number;
   name: string;
-  avgMinTemp: string;
-  avgMinTemp_F: string;
-  absMaxTemp: string;
-  absMaxTemp_F: string;
-  avgDailyRainfall: string;
+  coord: Coordinate;
+  country: string;
+  population: number;
 }
 
-interface Weather {
-  date: string;
-  astronomy: Astronomy[];
-  maxtempC: string;
-  maxtempF: string;
-  mintempC: string;
-  mintempF: string;
-  totalSnow_cm: string;
-  sunHour: string;
-  uvIndex: string;
-  hourly: Hourly[];
+export class Coordinate {
+  lat: number;
+  lon: number;
 }
 
-interface Hourly {
-  time: string;
-  tempC: string;
-  tempF: string;
-  windspeedMiles: string;
-  windspeedKmph: string;
-  winddirDegree: string;
-  winddir16Point: string;
-  weatherCode: string;
-  weatherIconUrl: WeatherIconUrl[];
-  weatherDesc: WeatherIconUrl[];
-  precipMM: string;
-  humidity: string;
-  visibility: string;
-  pressure: string;
-  cloudcover: string;
-  HeatIndexC: string;
-  HeatIndexF: string;
-  DewPointC: string;
-  DewPointF: string;
-  WindChillC: string;
-  WindChillF: string;
-  WindGustMiles: string;
-  WindGustKmph: string;
-  FeelsLikeC: string;
-  FeelsLikeF: string;
-  chanceofrain: string;
-  chanceofremdry: string;
-  chanceofwindy: string;
-  chanceofovercast: string;
-  chanceofsunshine: string;
-  chanceoffrost: string;
-  chanceofhightemp: string;
-  chanceoffog: string;
-  chanceofsnow: string;
-  chanceofthunder: string;
+export class Clouds {
+  all: number;
 }
 
-interface Astronomy {
-  sunrise: string;
-  sunset: string;
-  moonrise: string;
-  moonset: string;
-}
-
-interface Currentcondition {
-  observation_time: string;
-  temp_C: string;
-  temp_F: string;
-  weatherCode: string;
-  weatherIconUrl: WeatherIconUrl[];
-  weatherDesc: WeatherIconUrl[];
-  windspeedMiles: string;
-  windspeedKmph: string;
-  winddirDegree: string;
-  winddir16Point: string;
-  precipMM: string;
-  humidity: string;
-  visibility: string;
-  pressure: string;
-  cloudcover: string;
-  FeelsLikeC: string;
-  FeelsLikeF: string;
-}
-
-interface WeatherIconUrl {
-  value: string;
-}
-
-interface Request {
-  query: string;
+export class Sys {
+  pod: string;
 }

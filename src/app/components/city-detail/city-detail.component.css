@@ -1,3 +1,18 @@
 .border {
   border: 1px solid brown;
 }
+
+.weather {
+  display: flex;
+  flex-direction: row;
+}
+
+.weather-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.weather-data {
+  min-width: 250px;
+}
+
