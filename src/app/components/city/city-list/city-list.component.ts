@@ -4,10 +4,10 @@ import { CityDetailComponent } from '../city-detail/city-detail.component';
 
 @Component({
   selector: 'app-city',
-  templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  templateUrl: './city-list.component.html',
+  styleUrls: ['./city-list.component.scss']
 })
-export class CityComponent implements OnInit {
+export class CityListComponent implements OnInit {
 
   constructor() { }
 

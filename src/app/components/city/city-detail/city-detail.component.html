@@ -1,15 +1,11 @@
-<div class="">
-  <div class="">
+<div class="container-fluid">
+  <form hidden class="form-group">
     <div class="">
-      <form hidden class="">
-        <div class="">
-          <input #hourly type="checkbox" class="" id="hourCheck">
-          <label class="" for="hourCheck">Saat</label>
-        </div>
-        <small>Saatlik detaylı hava durumu bilgisi istiyorsanız seçin.</small>
-      </form>
+      <input #hourly type="checkbox" class="" id="hourCheck">
+      <label class="" for="hourCheck">Saat</label>
     </div>
-  </div>
+    <small>Saatlik detaylı hava durumu bilgisi istiyorsanız seçin.</small>
+  </form>
 
   <div class="" *ngIf="!loading; else loadingTemplate">
     <div class="" *ngIf="!hidden">

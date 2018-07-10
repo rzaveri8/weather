@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
-import { Weather } from '../../Models/Weather';
+import { WeatherService } from '../../../services/weather.service';
+import { Weather } from '../../../Models/Weather';
 
 @Component({
   selector: 'app-city-detail',
   templateUrl: './city-detail.component.html',
-  styleUrls: ['./city-detail.component.css']
+  styleUrls: ['./city-detail.component.scss']
 })
 export class CityDetailComponent implements OnInit {
   constructor(private weatherService: WeatherService) {}
