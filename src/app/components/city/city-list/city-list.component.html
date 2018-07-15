@@ -1,30 +1,51 @@
-<div class="wrapper">
-  <div *ngIf="!localStorageFlag" class="city-list">
-    <div class="table-responsive">
-      <table id="city-table" class="table">
-        <thead>
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="d-flex justify-content-center w-100">
+      <table class="table table-responsive-lg w-25">
+        <tbody>
           <tr>
-            <th class="text-center" scope="col">Şehirler</th>
-            <th class="text-center" scope="col">Sil</th>
-            <th class="text-center" scope="col">Detaylı Görünüm</th>
+            <td>Mark</td>
+            <td><i class="fas fa-heart"></i></td>
           </tr>
-        </thead>
-        <tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">
-          <td class="text-center">
-            {{city}}
-          </td>
-          <td class="text-center">
-            <a (click)="onDetail(city)">Detay</a>
-          </td>
-          <td class="text-center">
-            <button class="btn btn-danger" (click)="deleteCity(i)">Sil</button>
-          </td>
-        </tr>
+          <tr>
+            <td>Mark</td>
+            <td><i class="fas fa-heart"></i></td>
+          </tr>
+          <tr>
+            <td>Mark</td>
+            <td><i class="fas fa-heart"></i></td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
-
-  <app-city-add class="city-add" (outputToParent)="GetOutputValue($event)"></app-city-add>
-
-  <app-city-detail class="city-detail"></app-city-detail>
 </div>
+
+<!--<div class="wrapper">-->
+<!--<div *ngIf="!localStorageFlag" class="city-list">-->
+<!--<div class="table-responsive">-->
+<!--<table id="city-table" class="table">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th class="text-center" scope="col">Şehirler</th>-->
+<!--<th class="text-center" scope="col">Sil</th>-->
+<!--<th class="text-center" scope="col">Detaylı Görünüm</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tr *ngFor="let city of cities; let i = index" [attr.city-index]="i">-->
+<!--<td class="text-center">-->
+<!--{{city}}-->
+<!--</td>-->
+<!--<td class="text-center">-->
+<!--<a (click)="onDetail(city)">Detay</a>-->
+<!--</td>-->
+<!--<td class="text-center">-->
+<!--<button class="btn btn-danger" (click)="deleteCity(i)">Sil</button>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+<!--</div>-->
+<!--<app-city-add class="city-add" (outputToParent)="GetOutputValue($event)"></app-city-add>-->
+<!--<app-city-detail class="city-detail"></app-city-detail>-->
+<!--</div>-->

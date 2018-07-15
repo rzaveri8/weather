@@ -1,4 +1,4 @@
-import { AppPage } from './app.po';
+import {AppPage} from './app.po';
 
 describe('weather App', () => {
   let page: AppPage;
@@ -7,8 +7,14 @@ describe('weather App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+  it('should display header text', () => {
+    AppPage.navigateTo();
+    expect(AppPage.getHeaderText()).toEqual('immino')
+      .then(() => {
+        console.log('test passed');
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 });

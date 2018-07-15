@@ -1,54 +1,53 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CityBasicComponent } from '../city-basic/city-basic.component';
-import { CityDetailComponent } from '../city-detail/city-detail.component';
+import {Component, OnInit} from '@angular/core';
+import {CityService} from '../city.service';
 
 @Component({
-  selector: 'app-city',
+  selector: 'app-city-list',
   templateUrl: './city-list.component.html',
   styleUrls: ['./city-list.component.scss']
 })
 export class CityListComponent implements OnInit {
 
-  constructor() { }
+  searchResult: Array<string>;
 
-  @ViewChild(CityBasicComponent) cityBasic;
-  @ViewChild(CityDetailComponent) cityDetail;
-
-  city = 'select city';
-  cities = [
-    'Istanbul', 'Kocaeli', 'London', 'New York'
-  ];
-  weather: any;
-  localStorageFlag = true; // true when data is not loaded
-  myStorage = window.localStorage;
-
-  GetOutputValue(newCity: string) {
-    if (newCity) {
-      this.cities.push(newCity);
-      // localstorage'a cities dizisini ekle
-      this.myStorage.setItem('cities', JSON.stringify(this.cities));
-    }
+  constructor(private cityService: CityService) {
   }
 
-  getCitiesFromLocalStorage() {
-    this.cities = JSON.parse(this.myStorage.getItem('cities'));
-  }
-
-  deleteCity(index) {
-    this.cities.splice(index, 1);
-    this.myStorage.removeItem('cities');
-    this.myStorage.setItem('cities', JSON.stringify(this.cities));
-  }
-
-  onDetail(city: string) {
-    this.cityDetail.changeCity(city);
+  newMessage(searchResult: string[]) {
+    this.cityService.changeMessage(searchResult);
   }
 
   ngOnInit() {
-    if (this.myStorage.getItem('cities') === null) {
-      this.myStorage.setItem('cities', JSON.stringify(this.cities));
-    }
-    this.getCitiesFromLocalStorage();
-    this.localStorageFlag = false;
+    this.cityService.currentMessage.subscribe(searchResult => {
+      this.searchResult = searchResult;
+      console.log(this.searchResult);
+    });
+    // if (this.myStorage.getItem('cities') === null) {
+    //   this.myStorage.setItem('cities', JSON.stringify(this.cities));
+    // }
+    // this.getCitiesFromLocalStorage();
+    // this.localStorageFlag = false;
   }
+
+  // GetOutputValue(newCity: string) {
+  //   if (newCity) {
+  //     this.cities.push(newCity);
+  //     // localstorage'a cities dizisini ekle
+  //     this.myStorage.setItem('cities', JSON.stringify(this.cities));
+  //   }
+  // }
+  //
+  // getCitiesFromLocalStorage() {
+  //   this.cities = JSON.parse(this.myStorage.getItem('cities'));
+  // }
+  //
+  // deleteCity(index) {
+  //   this.cities.splice(index, 1);
+  //   this.myStorage.removeItem('cities');
+  //   this.myStorage.setItem('cities', JSON.stringify(this.cities));
+  // }
+  //
+  // onDetail(city: string) {
+  //   this.cityDetail.changeCity(city);
+  // }
 }
