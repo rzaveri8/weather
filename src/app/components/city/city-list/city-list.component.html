@@ -3,16 +3,9 @@
     <div class="d-flex justify-content-center w-100">
       <table class="table table-responsive-lg w-25">
         <tbody>
-          <tr>
-            <td>Mark</td>
-            <td><i class="fas fa-heart"></i></td>
-          </tr>
-          <tr>
-            <td>Mark</td>
-            <td><i class="fas fa-heart"></i></td>
-          </tr>
-          <tr>
-            <td>Mark</td>
+          <tr *ngFor="let city of searchResults; let i = index">
+            <td>{{city}}</td>
+            <td>{{i}}</td>
             <td><i class="fas fa-heart"></i></td>
           </tr>
         </tbody>

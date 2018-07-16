@@ -8,19 +8,17 @@ import {CityService} from '../city.service';
 })
 export class CityListComponent implements OnInit {
 
-  searchResult: Array<string>;
+  searchResults: Array<string>;
 
-  constructor(private cityService: CityService) {
-  }
+  constructor(private cityService: CityService) {}
 
-  newMessage(searchResult: string[]) {
-    this.cityService.changeMessage(searchResult);
+  sendSearchResult(searchResult: string[]) {
+    this.cityService.sendSearchResult(searchResult);
   }
 
   ngOnInit() {
     this.cityService.currentMessage.subscribe(searchResult => {
-      this.searchResult = searchResult;
-      console.log(this.searchResult);
+      this.searchResults = searchResult;
     });
     // if (this.myStorage.getItem('cities') === null) {
     //   this.myStorage.setItem('cities', JSON.stringify(this.cities));

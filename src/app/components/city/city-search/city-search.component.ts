@@ -8,23 +8,23 @@ import {CityService} from '../city.service';
 })
 export class CitySearchComponent implements OnInit {
 
-  searchResult: Array<string>;
+  searchResults: Array<string>;
 
-  constructor(private cityService: CityService) {
-  }
+  constructor(private cityService: CityService) {}
 
   search(name: string) {
-    const searchResult = this.cityService.searchCity(name);
-    // console.log(searchResult);
-    // arama sonucu city-list compoenentine wgönderilecek.
-    this.newMessage(searchResult);
+    const searchResults = this.cityService.searchCity(name);
+
+    this.sendSearchResult(searchResults);
   }
 
-  newMessage(searchResult: string[]) {
-    this.cityService.changeMessage(searchResult);
+  sendSearchResult(searchResult: string[]) {
+    this.cityService.sendSearchResult(searchResult);
   }
 
   ngOnInit() {
-    this.cityService.currentMessage.subscribe(searchResult => this.searchResult = searchResult);
+    this.cityService.currentMessage.subscribe(searchResult => {
+      this.searchResults = searchResult;
+    });
   }
 }

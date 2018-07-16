@@ -10,7 +10,7 @@ export class CityService {
   private messageSource = new BehaviorSubject(Array<string>());
   currentMessage = this.messageSource.asObservable();
 
-  changeMessage(searchResult: string[]) {
+  sendSearchResult(searchResult: string[]) {
     this.messageSource.next(searchResult);
   }
 
@@ -22,5 +22,27 @@ export class CityService {
       }
     });
     return Array.from(new Set(searchTemp));
+  }
+
+  public searchCityV2(name: string): Array<string> | undefined {
+    const searchTemp = [];
+    this.cities.filter(city => {
+      if (city.toLowerCase().search(name.toLowerCase()) !== -1 && !searchTemp.includes(city)) {
+        searchTemp.push(city);
+      }
+    });
+    return searchTemp;
+  }
+
+  public searchCityV3(name: string): Array<string> | undefined {
+    const searchTemp = [];
+    this.cities.filter(city => {
+      if (city.toLowerCase().search(name.toLowerCase()) !== -1) {
+        if (!searchTemp.includes(city)) {
+          searchTemp.push(city);
+        }
+      }
+    });
+    return searchTemp;
   }
 }
