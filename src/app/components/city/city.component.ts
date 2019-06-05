@@ -11,8 +11,8 @@ export class CityComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild(CityBasicComponent) cityBasic;
-  @ViewChild(CityDetailComponent) cityDetail;
+  @ViewChild(CityBasicComponent, { static: false }) cityBasic;
+  @ViewChild(CityDetailComponent, { static: true }) cityDetail;
 
   city = 'select city';
   cities = [

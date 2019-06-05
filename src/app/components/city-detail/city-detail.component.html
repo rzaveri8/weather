@@ -10,35 +10,31 @@
   <div *ngIf="!hidden">
     <h4 class="baslik"><b>{{city}}</b></h4>
 
-    <p>Gözlem Saati: {{weather.data.current_condition[0].observation_time}}</p>
-    <p>Gökyüzü: {{weather.data.current_condition[0].weatherDesc[0].value}}</p>
+    <!--    <p>Gözlem Saati: {{weather.data.current_condition[0].observation_time}}</p>-->
+    <!--    <p>Gökyüzü: {{weather.data.current_condition[0].weatherDesc[0].value}}</p>-->
 
-    <p>Sıcaklık: {{weather.data.current_condition[0].temp_C}} °C</p>
-    <p>Nem: %{{weather.data.current_condition[0].humidity}}</p>
-    <p>Basınç: {{weather.data.current_condition[0].pressure}} mmHg</p>
+    <!--    <p>Sıcaklık: {{weather.data.current_condition[0].temp_C}} °C</p>-->
+    <!--    <p>Nem: %{{weather.data.current_condition[0].humidity}}</p>-->
+    <!--    <p>Basınç: {{weather.data.current_condition[0].pressure}} mmHg</p>-->
 
     <h4 class="detay"><b>Haftalık Hava Durumu Özeti</b></h4>
 
     <table class="table table-responsive table-bordered table-hover">
       <tr>
         <th><b><u>Tarih</u></b></th>
-        <th>Gün Doğumu</th>
-        <th>Gün Batımı</th>
+        <th>Nem</th>
         <th>En Yüksek Sıcaklık</th>
         <th>En Düşük Sıcaklık</th>
-        <th>Yağmur Olasılığı</th>
       </tr>
 
-      <tr *ngFor="let day of weather.data.weather">
-        <td>{{day.date}}</td>
-        <td>{{day.astronomy[0].sunrise}}</td>
-        <td>{{day.astronomy[0].sunset}}</td>
-        <td>{{day.maxtempC}}</td>
-        <td>{{day.mintempC}}</td>
-        <td>%{{day.hourly[4].chanceofrain}}</td>
+      <tr *ngFor="let day of weather.list">
+        <td>{{day.dt_txt | date: 'dd/MM/yyyy'}}</td>
+        <td>{{day.main.humidity}}</td>
+        <td>{{day.main.temp_min}}</td>
+        <td>{{day.main.temp_max}}</td>
       </tr>
     </table>
-    <small>*Not: Yağmur olasılığı her gün saat 12:00 için gösterilmektedir.</small>
+    <!--    <small>*Not: Yağmur olasılığı her gün saat 12:00 için gösterilmektedir.</small>-->
   </div>
 </div>
 

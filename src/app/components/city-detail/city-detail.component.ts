@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 
 @Component({
@@ -8,7 +8,8 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class CityDetailComponent implements OnInit {
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService) {
+  }
 
   city: string;
   weather: any;
@@ -23,10 +24,10 @@ export class CityDetailComponent implements OnInit {
 
     this.weatherService.getWeatherDataFromApi(city)
       .subscribe((weather) => {
-        this.weather = weather;
-        this.city = city;
-        this.hidden = false;
-      },
+          this.weather = weather;
+          this.city = city;
+          this.hidden = false;
+        },
         err => {
           console.log(err);
         },
